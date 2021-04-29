@@ -1,7 +1,7 @@
-const path = require('path')
-const webpack = require('webpack')
-const HtmlWebPackPlugin = require("html-webpack-plugin")
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
     output: {
@@ -12,7 +12,7 @@ module.exports = {
     mode: 'development',
     devtool: 'source-map',
     devServer:{
-        port: 8080
+        port: 8081
     },
     stats: 'verbose',
     module: {

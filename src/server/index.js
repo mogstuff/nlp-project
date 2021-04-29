@@ -14,16 +14,21 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
+
+
+// CHANGE 
+//app.use(express.static('src/client'));
+//TO THIS
 app.use(express.static('dist'));
 
 console.log(__dirname);
 
 app.get('/', function (req, res) {
-    res.sendFile('dist/index.html')  ;
+    res.sendFile('dist/index.html') ;
 })
 
 // designates what port the app will listen to for incoming requests
-app.listen(8081, function () {
+app.listen(port, function () {
     console.log(`Example app listening on port ${port}!`);
 })
 
@@ -32,8 +37,6 @@ app.get('/test', function (req, res) {
 })
 
 
-app.post('/post,', (req, res) => {
-    console.log("post data: ");
-    console.log(req.body);
-    url = req.body
+app.post('/postData', bodyParser.json(), function (req, res) {
+    res.send(mockAPIResponse);
 })
