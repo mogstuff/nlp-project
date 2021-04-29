@@ -2,7 +2,7 @@
 const path = require('path');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const port = process.env.PORT || 8081;
+const port = process.env.PORT || 8080;
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -32,7 +32,7 @@ app.get('/', function (req, res) {
 })
 
 // designates what port the app will listen to for incoming requests
-app.listen(8081, function () {
+app.listen(port, function () {
     console.log(`Example app listening on port ${port}!`);
 })
 
@@ -42,7 +42,7 @@ app.get('/test', function (req, res) {
 
 // adapted from the api docs 
 // https://learn.meaningcloud.com/developer/sentiment-analysis/2.1/dev-tools
-app.post('/analysethis', (req, res) => {
+app.post('/doit', (req, res) => {
 
     const formdata = new FormData();
     formdata.append("key", meaningCloudeKey.meaning_cloud_key);   
@@ -51,8 +51,8 @@ app.post('/analysethis', (req, res) => {
 
     const requestOptions = {
         method: 'POST',
-        body: formdata,
-        redirect: 'follow'
+        body: formdata
+       
     };
 
 

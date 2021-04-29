@@ -1,16 +1,36 @@
+import { response } from "express";
+
 function handleSubmit(event) {
-    event.preventDefault()
 
-    // check what text was put into the form field
-    let formText = document.getElementById('name').value
-    checkForName(formText)
+    try {      
 
-    console.log("::: Form Submitted :::")
-    fetch('http://localhost:8080/test')
-    .then(res => res.json())
-    .then(function(res) {
-        document.getElementById('results').innerHTML = res.message
-    })
+        event.preventDefault();
+
+        let formText = document.getElementById('url').value;
+        
+        if (formText.length < 1) {
+            throw "url field cannot be empty";
+        }
+        
+        let validText = Client.checkForUrl(formText);
+        
+        if (!validText) {
+            throw `invalid url: ${formText}`;
+        }
+
+        console.info('SEND THE REQUEST TO THE API HERE');     
+
+    } catch (error) {
+
+            console.log(error);
+
+            let errors = document.getElementById('validation');
+            errors.innerHTML = '';
+            let p = document.createElement('p');
+            p.classList.add('error');
+            p.innerText = error;
+            errors.appendChild(p);
+    }
 }
 
 export { handleSubmit }

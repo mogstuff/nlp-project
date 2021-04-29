@@ -3,10 +3,20 @@ const webpack = require('webpack')
 const HtmlWebPackPlugin = require("html-webpack-plugin")
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
-module.exports = {
+module.exports = {    
+
+    output: {
+        libraryTarget:'var',
+        library:'Client'
+    },
     entry: './src/client/index.js',
     mode: 'development',
     devtool: 'source-map',
+
+    devServer:{
+        port: 8080
+    },
+
     stats: 'verbose',
     module: {
         rules: [
@@ -17,6 +27,7 @@ module.exports = {
             }
         ]
     },
+    
     plugins: [
         new HtmlWebPackPlugin({
             template: "./src/client/views/index.html",
