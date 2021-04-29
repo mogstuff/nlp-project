@@ -32,3 +32,8 @@ app.get('/test', function (req, res) {
 })
 
 
+app.post('/post,', (req, res) => {
+    console.log("post data: ");
+    console.log(req.body);
+    url = req.body
+})
