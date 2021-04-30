@@ -2,21 +2,43 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title>NLP | Natural Language Processing Project | Mark Morgan</title>     
+        <title>Mark Morgan | Article Sentiment Analysis Project | Udacity FEWD Nanodegree</title>
+        <!-- <link rel="stylesheet" href="/styles/resets.css">
+        <link rel="stylesheet" href="/styles/base.css">
+        <link rel="stylesheet" href="/styles/header.css">
+        <link rel="stylesheet" href="/styles/form.css">
+        <link rel="stylesheet" href="/styles/footer.css"> -->
+        <style>
+            main{
+                display:grid;
+                grid-row: 1fr auto 1fr;
+            }
+        </style>
     </head>
 
     <body>
 
         <header>
-            <div class="">
-                Logo
-            </div>
-            <div class="">
-                navigation
-            </div>
+           <h1>Article Sentiment Analysis</h1>
+           <h2>Udacity Front End Web Developer Nanodegree Project 3</h2>      
         </header>
 
         <main>
+
+            <section id="introduction">
+                <p>
+                This web application uses the <a href="https://www.meaningcloud.com/developer/sentiment-analysis" target="_blank">Sentiment Analysis API</a>
+                from <a href="https://www.meaningcloud.com/" target="_blank">Meaning Cloud</a>, in this instance to analyse news articles.</p>
+                <h3>What is Sentiment Analysis?</h3>
+              <figure>
+                <blockquote cite="https://www.meaningcloud.com/products/sentiment-analysis">
+                    <p>Have you ever wondered what people say about you, your company or your products in social networks? Have you ever tried to analyze the tens of thousands of answers to open-ended questions in customer satisfaction surveys?</p>
+                </blockquote>
+                <figcaption><cite>From Meaning Cloud Website</cite></figcaption>
+              </figure>
+
+            </section>
+
             <section>              
                 <div id="validation"></div>
                <form>
@@ -26,13 +48,13 @@
             </section>
 
             <section>
-                <strong>Form Results:</strong>
+                <h3>Analysis Results:</h3>
                 <div id="results"></div>
             </section>
         </main>
 
         <footer>
-            <p>This is a footer</p>
+            <p>@copy Mark Morgan</p>
         </footer>
 
     </body>
