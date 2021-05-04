@@ -11,7 +11,7 @@ function handleSubmit(event) {
 
     console.log(data); 
 
-  postUrl('/postData', data).then(updateUI()).catch((error) => {
+  postUrl('http://localhost:8081/postData', data).then(updateUI()).catch((error) => {
     console.error(error);
 });
 
