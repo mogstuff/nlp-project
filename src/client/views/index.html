@@ -7,10 +7,12 @@
 
     <body>
 
-        <header>
+        <div id="wrapper">
+
+        <header >
            <h1>Article Sentiment Analysis</h1>
            <h2>Udacity Front End Web Developer Nanodegree Project 3</h2>      
-           <img src="https://i.ibb.co/VjGNs78/fingers-5946228-1920.jpg" height="200px" alt="">
+          
         </header>
 
         <main>
@@ -18,7 +20,8 @@
             <section id="introduction">
                 <p>
                 This web application uses the <a href="https://www.meaningcloud.com/developer/sentiment-analysis" target="_blank">Sentiment Analysis API</a>
-                from <a href="https://www.meaningcloud.com/" target="_blank">Meaning Cloud</a>, in this instance to analyse news articles.</p>
+                from <a href="https://www.meaningcloud.com/" target="_blank">Meaning Cloud</a>, in this instance to analyse 
+                news articles. The project was completed as part of the Udacity Front End Web Developer Nanodegree Program</p>
                 <h3>What is Sentiment Analysis?</h3>
               <figure>
                 <blockquote cite="https://www.meaningcloud.com/products/sentiment-analysis">
@@ -29,7 +32,7 @@
 
             </section>
 
-            <section>              
+            <section id="form">              
                 <div id="validation"></div>
                <form>
                 <input id="url" type="text" name="url" value="" placeholder="enter valid url here" required>
@@ -37,7 +40,7 @@
                 </form>
             </section>
 
-            <section>
+            <section id="results-section">
                 <h3>Analysis Results:</h3>
                 <div id="results"></div>
             </section>
@@ -46,6 +49,8 @@
         <footer>
             <p>@copy Mark Morgan</p>
         </footer>
+
+    </div>
 
     </body>
 </html>
