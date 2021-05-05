@@ -101,6 +101,7 @@ function showPreloader(){
   
     let results = document.getElementById('results');    
     results.innerHTML = '';
+    results.scrollIntoView({behavior: "smooth"});
 
     let loader = document.createElement('div');
     loader.classList.add('loader');

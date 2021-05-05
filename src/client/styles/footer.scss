@@ -1,8 +1,13 @@
 footer{
     text-align: center;
     font-size: x-small;
-    background-color: white;
+    background-color: white; 
+  
+}
+
+#footer-content{
     display: flex;
     justify-content: center;
     align-items: center;
+    height:100px;
 }
