@@ -1,18 +1,30 @@
 function handleSubmit(event) {
+
     event.preventDefault();
 
-    let formText = document.getElementById('url').value
-    Client.checkForName(formText); 
+    try {
 
-    let data = { url: encodeURI(formText) };
+        let formText = document.getElementById('url').value
+        
+        clearErrors();
 
-  showPreloader();
+        Client.checkForUrl(formText);
 
-    postUrl('http://localhost:8081/postData', data);
+        let data = { url: encodeURI(formText) };
+
+        showPreloader();
+
+        postUrl('http://localhost:8081/postData', data);
+    }
+
+    catch (error) {
+        displayErrors(error);
+    }
+
 }
 
 
-const postUrl = async (url = '', data = {}) => {   
+const postUrl = async (url = '', data = {}) => {
 
     const response = await fetch(url, {
         method: 'POST',
@@ -25,48 +37,53 @@ const postUrl = async (url = '', data = {}) => {
     });
 
     try {
-     
-        const data = await response.json();
-        console.log('response from api');
-        console.log(data);
+
+        const data = await response.json();      
         updateUI(data);
 
-       return data;     
+        return data;
 
     } catch (error) {
-        displayErrors(error);
-        console.error('error posting data to API', error);
+        displayErrors(error);       
     }
 };
 
 
 function displayErrors(error) {
-    console.log(error);
+   
+    let errors = document.getElementById('validation');
+    errors.innerHTML = '';
+    let p = document.createElement('p');
+    p.classList.add('error');
+    p.innerText = error;
+    errors.appendChild(p);
+
 }
 
 
-const updateUI = async (result) => {
-    console.log('update ui here');
-    console.log(result);
+function clearErrors(){
+    let errors = document.getElementById('validation');
+    errors.innerHTML = '';
+}
 
-    console.log('result.score_tag: ');
-    console.log(result.score_tag);
 
-    let results = document.getElementById('results');    
+const updateUI = async (result) => {  
+
+    let results = document.getElementById('results');
     results.classList.remove('loader');
     results.innerHTML = '';
-    results.scrollIntoView({behavior: "smooth"});
+    results.scrollIntoView({ behavior: "smooth" });
 
     let heading = document.createElement('h3');
     heading.innerText = 'Analysis Results';
     results.appendChild(heading);
 
-      // score tag
-      let score_tag = document.createElement('div');
-      score_tag.innerHTML = '<span>Score Tag: </span>' + result.score_tag;
-      score_tag.classList.add('score_tag');
-      results.appendChild(score_tag);
-     
+    // score tag
+    let score_tag = document.createElement('div');
+    score_tag.innerHTML = '<span>Score Tag: </span>' + result.score_tag;
+    score_tag.classList.add('score_tag');
+    results.appendChild(score_tag);
+
     // Confidence
     let confidence = document.createElement('div');
     confidence.innerHTML = '<span>Confidence: </span>' + result.confidence;
@@ -79,33 +96,31 @@ const updateUI = async (result) => {
     subjectivity.classList.add('subjectivity');
     results.appendChild(subjectivity);
 
-
     // agreement
     let agreement = document.createElement('div');
     agreement.innerHTML = '<span>Agreement: </span>' + result.agreement;
     agreement.classList.add('agreement');
     results.appendChild(agreement);
-   
+
     // irony
     let irony = document.createElement('div');
     irony.innerHTML = '<span>Irony: </span>' + result.irony;
     irony.classList.add('irony');
-    results.appendChild(irony);  
-  
+    results.appendChild(irony);
 
     document.getElementById('results-section').classList.add('roundGrayBorder');
 
 }
 
-function showPreloader(){
-  
-    let results = document.getElementById('results');    
+function showPreloader() {
+
+    let results = document.getElementById('results');
     results.innerHTML = '';
-    results.scrollIntoView({behavior: "smooth"});
+    results.scrollIntoView({ behavior: "smooth" });
 
     let loader = document.createElement('div');
     loader.classList.add('loader');
-    results.appendChild(loader); 
+    results.appendChild(loader);
 
     let heading = document.createElement('div');
     heading.innerHTML = '<p>.... processing data</p>';
@@ -114,4 +129,4 @@ function showPreloader(){
 }
 
 
-export { handleSubmit }
+export { handleSubmit, displayErrors,  clearErrors, updateUI, showPreloader }
