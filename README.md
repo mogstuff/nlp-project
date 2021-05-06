@@ -18,7 +18,7 @@ Perhaps more importantly several issues were encountered with npm package versio
 
 The project can be viewed in production on the Heroku platform here:
 
-https://nlp-project-markmorgan.herokuapp.com/
+https://nlp-project-mogstuff.herokuapp.com/
 
 Deploying the app into production proved a little challenging at first as the .gitignore file excludes the .env and dist folders so this won't actually run as webpack configures the app to serve the bundled files in the /dist folder.  This was overcome by creating a new branch with these changes omitted, pushing that up to github.com, deploying the branch in Heroku, then deleting the remote branch from github.com.
 
